@@ -1,0 +1,144 @@
+body {
+  background-color: whitesmoke;
+  height: auto;
+  width: 400px;
+  margin: 0%;
+}
+
+#header {
+  margin: 0%;
+  background: #23282e;
+  align-items: center;
+  text-align: center;
+  color: #bdc2c6;
+  font-weight: 300;
+  font-size: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+}
+
+.class-component {
+  display: flex;
+  flex-direction: row;
+  background-color: #1abc9c;
+  align-items: center;
+  justify-content: start;
+  border-color: whitesmoke;
+  border: #bdc2c6;
+  border-width: 5px;
+}
+.class-name {
+  margin-top: 2px;
+  background: #23282e;
+  text-align: left;
+  color: #bdc2c6;
+  font-weight: 200;
+  font-size: 18px;
+  width: 150px;
+  top: 0;
+  left: 0;
+}
+
+.attented {
+  margin-left: 2px;
+}
+
+.plus-btn {
+  background: #23282e;
+  text-align: left;
+  color: #bdc2c6;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.minus-btn {
+  background: #23282e;
+  text-align: left;
+  color: #bdc2c6;
+  margin-left: 5px;
+}
+
+.percentage {
+  color: white;
+}
+
+.del-btn {
+  background: #23282e;
+  text-align: center;
+  justify-items: flex-end;
+  color: #bdc2c6;
+  margin-left: 5px;
+}
+
+#bottom-btns {
+  margin-top: 2px;
+  position: relative;
+  justify-content: space-evenly;
+  background-color: white;
+}
+
+#create-btn {
+  text-align: center;
+  background-color: #1abc9c;
+  color: white;
+  font-size: 15px;
+  margin-bottom: 2px;
+  width: 380px;
+  margin: 5px;
+}
+
+#save-btn {
+  text-align: center;
+  background-color: #1abc9c;
+  color: white;
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+
+#ad-bottom {
+  position: static;
+  margin: auto;
+  width: auto;
+  height: 50px;
+  background-color: #23282e;
+  font-weight: bolder;
+  color: whitesmoke;
+  font-size: 18px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+
+.create-comp {
+  display: flex;
+  flex-direction: column;
+}
+
+#inputClassName {
+  margin: 5px 5px;
+}
+
+#inputPresent {
+  margin-bottom: 5px;
+}
+
+#inputTotal {
+  margin-bottom: 5px;
+}
+
+#okBtn {
+  text-align: center;
+  background-color: #1abc9c;
+  color: white;
+  font-size: 15px;
+  margin-left: 20px;
+}
+
+#appBody {
+  background-color: #1abc9c;
+}
