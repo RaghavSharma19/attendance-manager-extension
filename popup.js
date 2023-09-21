@@ -66,18 +66,16 @@ function createClassComponent(className, initialAttendance, totalAttendance) {
     totalElement.textContent = totalAttendance;
     const percentage = calculatePercentage(initialAttendance, totalAttendance);
     percentageElement.textContent = percentage.toFixed(2) + "%";
+    saveClassToLocalStorage(className, initialAttendance, totalAttendance);
   });
 
   minusButton.addEventListener("click", () => {
-    if (initialAttendance > 0) {
-      totalAttendance++;
-      totalElement.textContent = totalAttendance;
-      const percentage = calculatePercentage(
-        initialAttendance,
-        totalAttendance
-      );
-      percentageElement.textContent = percentage.toFixed(2) + "%";
-    }
+    totalAttendance++;
+    totalElement.textContent = totalAttendance;
+    const percentage = calculatePercentage(initialAttendance, totalAttendance);
+    percentageElement.textContent = percentage.toFixed(2) + "%";
+
+    saveClassToLocalStorage(className, initialAttendance, totalAttendance);
   });
 
   delbtn.addEventListener("click", () => {
@@ -102,72 +100,6 @@ function calculatePercentage(presentValue, totalValue) {
 createBtn.addEventListener("click", () => {
   createNewClass();
 });
-
-function createEditClass() {
-  showclasses.style.display = "none";
-  bottomBtns.style.display = "none";
-  const createComp = document.createElement("div");
-  createComp.id = "create-comp";
-
-  // Create a label and input for Class Name
-  const classNameLabel = document.createElement("label");
-  classNameLabel.textContent = "Class Name:";
-  const classNameInput = document.createElement("input");
-  classNameInput.id = "inputClassName";
-
-  // Create a label and input for Present Classes
-  const presentClassesLabel = document.createElement("label");
-  presentClassesLabel.textContent = "Classes Attented:";
-  const presentClassesInput = document.createElement("input");
-  presentClassesInput.id = "inputPresent";
-
-  // Create a label and input for Total Classes
-  const totalClassesLabel = document.createElement("label");
-  totalClassesLabel.textContent = "Total Classes:";
-  const totalClassesInput = document.createElement("input");
-  totalClassesInput.id = "inputTotal";
-
-  const okBtn = document.createElement("button");
-  okBtn.id = "okBtn";
-
-  const divzero = document.createElement("div");
-  const divone = document.createElement("div");
-
-  okBtn.id = "okBtn";
-  okBtn.textContent = "Ok";
-
-  appbody.appendChild(createComp);
-
-  createComp.appendChild(classNameLabel);
-  createComp.appendChild(classNameInput);
-
-  createComp.appendChild(divzero);
-
-  createComp.appendChild(presentClassesLabel);
-  createComp.appendChild(presentClassesInput);
-
-  createComp.appendChild(divone);
-
-  createComp.appendChild(totalClassesLabel);
-  createComp.appendChild(totalClassesInput);
-
-  createComp.appendChild(okBtn);
-
-  okBtn.addEventListener("click", () => {
-    createComp.style.display = "none";
-    showclasses.style.display = "block";
-    bottomBtns.style.display = "block";
-
-    // Get the values entered by the user
-    const className = classNameInput.value;
-    const presentClasses = presentClassesInput.value;
-    const totalClasses = totalClassesInput.value;
-
-    // Call your 'createClassComponent' function with the values
-    createClassComponent(className, presentClasses, totalClasses);
-    saveClassToLocalStorage(className, presentClasses, totalClasses);
-  });
-}
 
 function createNewClass() {
   showclasses.style.display = "none";
