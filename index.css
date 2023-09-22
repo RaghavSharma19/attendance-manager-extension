@@ -74,10 +74,12 @@ body {
   margin-left: 5px;
 }
 .edit-btn {
-  background: #23282e;
+  background-image: url("./icon/edit.png");
+  background-size: contain;
+  width: 20px;
+  height: 20px;
   text-align: center;
   justify-items: flex-end;
-  color: #bdc2c6;
   margin-left: 5px;
   margin-right: 5px;
 }
@@ -95,7 +97,7 @@ body {
   color: white;
   font-size: 15px;
   margin-bottom: 2px;
-  width: 380px;
+  width: 400px;
   margin: 5px;
 }
 
@@ -147,6 +149,13 @@ body {
   margin-left: 20px;
 }
 
+#editOkBtn {
+  text-align: center;
+  background-color: #1abc9c;
+  color: white;
+  font-size: 15px;
+  margin-left: 20px;
+}
 #appBody {
   background-color: #1abc9c;
 }

@@ -48,7 +48,7 @@ function createClassComponent(className, initialAttendance, totalAttendance) {
 
   const editbtn = document.createElement("button");
   editbtn.className = "edit-btn";
-  editbtn.textContent = "edit";
+  // editbtn.textContent = "edit";
 
   component.appendChild(nameElement);
   component.appendChild(plusButton);
