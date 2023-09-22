@@ -46,6 +46,10 @@ function createClassComponent(className, initialAttendance, totalAttendance) {
   delbtn.textContent = "del";
   delbtn.className = "del-btn";
 
+  const editbtn = document.createElement("button");
+  editbtn.className = "edit-btn";
+  // editbtn.textContent = "edit";
+
   component.appendChild(nameElement);
   component.appendChild(plusButton);
   component.appendChild(percentageElement);
@@ -54,7 +58,7 @@ function createClassComponent(className, initialAttendance, totalAttendance) {
   component.appendChild(slashElement);
   component.appendChild(totalElement);
   component.appendChild(delbtn);
-
+  component.appendChild(editbtn);
   const percentage = calculatePercentage(initialAttendance, totalAttendance);
   percentageElement.textContent = percentage.toFixed(2) + "%";
 
@@ -87,6 +91,82 @@ function createClassComponent(className, initialAttendance, totalAttendance) {
       classComponent.remove();
       // console.log("executed");
     }
+  });
+
+  editbtn.addEventListener("click", () => {
+    showclasses.style.display = "none";
+    bottomBtns.style.display = "none";
+    const createEditComp = document.createElement("div");
+    createEditComp.id = "create-comp1";
+
+    // Create a label and input for Class Name
+    const classNameLabel = document.createElement("label");
+    classNameLabel.textContent = "Class Name:";
+    const editClassNameInput = document.createElement("input");
+    editClassNameInput.id = "inputClassName";
+    editClassNameInput.value = className; //setting value of input field
+    // Create a label and input for Present Classes
+    const editPresentClasses = document.createElement("label");
+    editPresentClasses.textContent = "Classes Attented:";
+    const editPresentClassesInput = document.createElement("input");
+    editPresentClassesInput.id = "inputPresent";
+    editPresentClassesInput.value = initialAttendance;
+
+    // Create a label and input for Total Classes
+    const editTotalClassesLabel = document.createElement("label");
+    editTotalClassesLabel.textContent = "Total Classes:";
+    const editTotalClassesInput = document.createElement("input");
+    editTotalClassesInput.id = "inputTotal";
+    editTotalClassesInput.value = totalAttendance;
+
+    const editOkBtn = document.createElement("button");
+    editOkBtn.id = "editOkBtn";
+
+    const divzero = document.createElement("div");
+    const divone = document.createElement("div");
+
+    editOkBtn.textContent = "Ok";
+
+    appbody.appendChild(createEditComp);
+
+    createEditComp.appendChild(classNameLabel);
+    createEditComp.appendChild(editClassNameInput);
+
+    createEditComp.appendChild(divzero);
+
+    createEditComp.appendChild(editPresentClasses);
+    createEditComp.appendChild(editPresentClassesInput);
+
+    createEditComp.appendChild(divone);
+
+    createEditComp.appendChild(editTotalClassesLabel);
+    createEditComp.appendChild(editTotalClassesInput);
+
+    createEditComp.appendChild(editOkBtn);
+
+    editOkBtn.addEventListener("click", () => {
+      localStorage.removeItem(className); // Call the deleteItem function with the class name
+      const classComponent = document.querySelector(
+        `.class-component[data-class="${className}"]`
+      );
+      if (classComponent) {
+        classComponent.remove();
+        // console.log("executed");
+      }
+
+      createEditComp.style.display = "none";
+      showclasses.style.display = "block";
+      bottomBtns.style.display = "block";
+
+      // Get the values entered by the user
+      const classNameNEW = editClassNameInput.value;
+      const presentClasses = editPresentClassesInput.value;
+      const totalClasses = editTotalClassesInput.value;
+      // Call your 'createClassComponent' function with the values
+
+      createClassComponent(classNameNEW, presentClasses, totalClasses);
+      saveClassToLocalStorage(classNameNEW, presentClasses, totalClasses);
+    });
   });
 
   showclasses.appendChild(component);
