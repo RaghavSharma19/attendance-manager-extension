@@ -145,16 +145,27 @@ function createClassComponent(className, initialAttendance, totalAttendance) {
     createEditComp.appendChild(editOkBtn);
 
     editOkBtn.addEventListener("click", () => {
+      localStorage.removeItem(className); // Call the deleteItem function with the class name
+      const classComponent = document.querySelector(
+        `.class-component[data-class="${className}"]`
+      );
+      if (classComponent) {
+        classComponent.remove();
+        // console.log("executed");
+      }
+
       createEditComp.style.display = "none";
       showclasses.style.display = "block";
       bottomBtns.style.display = "block";
+
       // Get the values entered by the user
-      const className = classNameInput.value;
-      const presentClasses = presentClassesInput.value;
-      const totalClasses = totalClassesInput.value;
+      const classNameNEW = editClassNameInput.value;
+      const presentClasses = editPresentClassesInput.value;
+      const totalClasses = editTotalClassesInput.value;
       // Call your 'createClassComponent' function with the values
-      createClassComponent(className, presentClasses, totalClasses);
-      saveClassToLocalStorage(className, presentClasses, totalClasses);
+
+      createClassComponent(classNameNEW, presentClasses, totalClasses);
+      saveClassToLocalStorage(classNameNEW, presentClasses, totalClasses);
     });
   });
 
